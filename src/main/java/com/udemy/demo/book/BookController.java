@@ -37,4 +37,12 @@ public class BookController {
         return new ResponseEntity(HttpStatus.OK);
 
     }
+
+    @GetMapping("/categories")
+    public ResponseEntity listCategories() {
+        Category category = new Category("BD");
+        Category categoryRoman = new Category("Roman");
+
+        return new ResponseEntity<>(Arrays.asList(category, categoryRoman), HttpStatus.OK);
+    }
 }
