@@ -1,6 +1,4 @@
 import MyBooks from './MyBooks'
-import './App.css';
-
 
 function App() {
 
