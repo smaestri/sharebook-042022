@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Book from './Book'
 
 
@@ -9,6 +9,7 @@ import './MyBooks.scss'
 const MyBooks = () => {
 
 const [myBooks, setMyBooks] = React.useState([])
+const history = useNavigate();
 
 const fetchBooks = () => {
   axios.get('/books').then(response => {
@@ -32,16 +33,18 @@ const fetchBooks = () => {
     <div className="list-container">
       {myBooks.length === 0 ? "Vous n'avez pas déclaré de livres" : null}
       {myBooks.map((book, key) => (<div key={key} className="mybook-container">
-        <Book title={book.title} category={book.category.label}></Book>
+      <Book title={book.title} category={book.category.label}></Book>
         <div className="container-buttons">
-          <Link to={`/addBook/${book.id}`}>
-            <button className="btn btn-primary btn-sm">Modifier</button>
-          </Link>
-          <button className="btn btn-primary btn-sm" onClick={()=>handleDelete(book.id)}>Supprimer</button>
+          <button className="btn btn-primary btn-sm" onClick={()=> history(`/addBook/${book.id}`)}>Modifier</button>
+          <button className="btn btn-primary btn-sm" onClick={()=> handleDelete(book.id)}>Supprimer</button>
         </div>
-      </div>))}
+      </div>
+      ))}
     </div>
     <Link to="/addBook"><button className="btn btn-primary btn-sm">Nouveau livre</button></Link>
-  </div>)
+  </div>
+
+  )
+
 }
 export default MyBooks;
