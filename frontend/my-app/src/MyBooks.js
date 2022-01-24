@@ -47,7 +47,7 @@ const history = useNavigate();
         </div>
         ))}
       </div>
-      <button className="btn btn-primary btn-sm" onClick={()=> history("/addBook/")}>Nouveau livre</button>
+      <button className="btn btn-primary btn-sm" onClick={()=> history("/addBook")}>Nouveau livre</button>
     </div>
 
     <SimpleModal

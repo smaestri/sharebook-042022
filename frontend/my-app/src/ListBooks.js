@@ -44,7 +44,7 @@ class ListBooks extends React.Component {
 }
 
 // Wrap and export
-export default function (props) {
+export default function useWrapper(props) {
   const history = useNavigate();
   return <ListBooks {...props} history={history} />;
 }
